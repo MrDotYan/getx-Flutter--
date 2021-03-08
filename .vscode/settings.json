@@ -1,0 +1,10 @@
+{
+  "git.enabled": false,
+  "merge-conflict.codeLens.enabled": false,
+  "merge-conflict.decorators.enabled": false,
+  "grunt.autoDetect": "off",
+  "gulp.autoDetect": "off",
+  "color-highlight.enable": false,
+  "php.suggest.basic": false,
+  "php.validate.enable": false
+}
