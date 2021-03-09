@@ -1,0 +1,1 @@
+git add -A && git commit -m "add And Fixed And Cahnged And Document" && git push origin master 

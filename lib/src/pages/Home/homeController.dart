@@ -10,7 +10,10 @@ class HomeController extends GetxController {
 
   get textEditingController => _textEditingController;
 
-  void searchEvent() {}
+  void searchEvent() {
+    Get.toNamed('/search');
+  }
+
   void scanEvent() {}
   void tabOnTapEvent(index) {}
   void messageEvent() {}

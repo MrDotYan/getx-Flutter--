@@ -13,9 +13,7 @@ class CategroyView extends StatelessWidget {
           leading: Builder(
             builder: (context) => IconButton(
                 icon: const Icon(IconData(0xe6d1, fontFamily: "iconFont")),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                }),
+                onPressed: () {}),
           ),
           actions: [
             IconButton(
@@ -23,6 +21,9 @@ class CategroyView extends StatelessWidget {
               onPressed: _categroyController.searchEvent,
             ),
             PopupMenuButton<String>(
+              onSelected: (value) {
+                print(value);
+              },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 10),
                 child: Center(
@@ -59,95 +60,140 @@ class CategroyView extends StatelessWidget {
             )
           ],
         ),
-        drawer: new Drawer(
-          child: Row(
-            children: [
-              Expanded(
-                  flex: 2,
-                  child: Container(
-                    color: Color(0xfff1f1f1),
-                    child: ListView.builder(
-                        itemCount: _categroyController.category.length,
-                        itemBuilder: (context, index) => GestureDetector(
-                              child: Obx(() => Container(
-                                    decoration: BoxDecoration(
-                                        color:
-                                            _categroyController.c1Index.value ==
-                                                    index
-                                                ? Color(0xfff5f5f5)
-                                                : Color(0xfff1f1f1),
-                                        border: _categroyController
-                                                    .c1Index.value ==
-                                                index
-                                            ? Border.symmetric(
-                                                horizontal: BorderSide(
-                                                    color: Color(0xff000000),
-                                                    width: 1))
-                                            : Border.symmetric(
-                                                horizontal: BorderSide.none)),
-                                    height: ScreenUtil().setHeight(40),
-                                    child: Center(
-                                      child: Text(
-                                          '${_categroyController.category[index]}'),
-                                    ),
-                                  )),
-                              onTap: () {
-                                _categroyController.onTapCategory(index, "c1");
-                              },
-                            )),
-                  )),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  color: Color(0xfff5f5f5),
-                  child: ListView.builder(
-                      itemCount: _categroyController.category.length,
-                      itemBuilder: (context, index) => GestureDetector(
-                            child: Obx(() => Container(
-                                  color:
-                                      _categroyController.c2Index.value == index
-                                          ? Color(0xfff9f9f9)
-                                          : Color(0xfff5f5f5),
-                                  height: ScreenUtil().setHeight(40),
-                                  child: Center(
-                                    child: Text(
-                                        '${_categroyController.category[index]}'),
-                                  ),
-                                )),
-                            onTap: () {
-                              _categroyController.onTapCategory(index, "c2");
-                            },
-                          )),
-                ),
-              ),
-              Expanded(
-                  flex: 3,
-                  child: Container(
-                    color: Color(0xfff9f9f9),
-                    child: ListView.builder(
-                        itemCount: _categroyController.category.length,
-                        itemBuilder: (context, index) => GestureDetector(
-                              child: Obx(
-                                () => Container(
-                                  color:
-                                      _categroyController.c3Index.value == index
-                                          ? Color(0xffffffff)
-                                          : Color(0xfff9f9f9),
-                                  height: ScreenUtil().setHeight(40),
-                                  child: Center(
-                                    child: Text(
-                                        '${_categroyController.category[index]}'),
+        body: GridView.builder(
+            physics: BouncingScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+              childAspectRatio: 0.9,
+            ),
+            itemCount: 200,
+            itemBuilder: (context, index) => Card(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: ScreenUtil().setHeight(100),
+                        decoration: BoxDecoration(
+                            color: Color(0xff0099ff),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Stack(
+                        children: [
+                          Positioned(
+                              bottom: ScreenUtil().setSp(10),
+                              right: ScreenUtil().setSp(10),
+                              child: IconButton(
+                                icon: const Icon(
+                                  IconData(0xe646, fontFamily: "iconFont"),
+                                  color: Color(0xff0099ff),
+                                ),
+                                onPressed: () {
+                                  _categroyController.toItemDeatils();
+                                },
+                              )),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.symmetric(vertical: 10),
+                                  child: Text(
+                                    '中式面点师考证课程【好利来教育培训】',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: TextStyle(
+                                        color: Color(0xff000000),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: ScreenUtil().setSp(14)),
                                   ),
                                 ),
+                                Container(
+                                  margin: EdgeInsets.symmetric(vertical: 10),
+                                  child: Text(
+                                    '价格：免费',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        color: Color(0xffff0000),
+                                        fontSize: ScreenUtil().setSp(12)),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.symmetric(vertical: 10),
+                                  child: Text(
+                                    '讲师：一个大帅逼',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        color: Color(0xff000000),
+                                        fontSize: ScreenUtil().setSp(12)),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )));
+  }
+}
+
+class ItemPicker extends StatelessWidget {
+  ItemPicker(
+      {Key key,
+      @required this.items,
+      @required this.selectedIndex,
+      @required this.onTap})
+      : super(key: key);
+
+  final List items;
+  final int selectedIndex;
+  final Function onTap;
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        physics: BouncingScrollPhysics(),
+        itemCount: items.length,
+        itemBuilder: (context, index) => GestureDetector(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: ScreenUtil().setHeight(40),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${items[index]}',
+                        style: TextStyle(
+                            color: selectedIndex == index
+                                ? Color(0xff0099ff)
+                                : Color(0xff000000)),
+                      ),
+                      selectedIndex == index
+                          ? Container(
+                              margin: EdgeInsets.only(left: 4),
+                              child: Icon(
+                                IconData(0xe65a, fontFamily: "iconFont"),
+                                size: ScreenUtil().setSp(16),
+                                color: selectedIndex == index
+                                    ? Color(0xff0099ff)
+                                    : Color(0xff000000),
                               ),
-                              onTap: () {
-                                _categroyController.onTapCategory(index, "c3");
-                              },
-                            )),
-                  ))
-            ],
-          ),
-        ),
-        body: Container());
+                            )
+                          : Container()
+                    ],
+                  ),
+                ),
+              ),
+              onTap: () {
+                onTap(index);
+              },
+            ));
   }
 }
