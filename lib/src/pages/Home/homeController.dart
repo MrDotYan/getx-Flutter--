@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
 
 class HomeController extends GetxController {
   final TextEditingController _textEditingController =
@@ -14,7 +15,11 @@ class HomeController extends GetxController {
     Get.toNamed('/search');
   }
 
-  void scanEvent() {}
+  void scanEvent() async {
+    String cameraScanResult = await scanner.scan();
+    print(cameraScanResult);
+  }
+
   void tabOnTapEvent(index) {}
   void messageEvent() {}
   void toItemDeatils() {}

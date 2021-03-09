@@ -8,7 +8,14 @@ class PersonalView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('个人中心')),
+      appBar: AppBar(
+        title: Text('个人中心'),
+        actions: [
+          IconButton(
+              icon: const Icon(IconData(0xe676, fontFamily: "iconFont")),
+              onPressed: () {})
+        ],
+      ),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
