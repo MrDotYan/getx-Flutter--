@@ -25,7 +25,9 @@ class HomeController extends GetxController {
 
   void tabOnTapEvent(index) {}
   void messageEvent() {}
-  void toItemDeatils() {}
+  void toItemDeatils() {
+    Get.toNamed('/items');
+  }
 
   void checkPlatfrom() {
     if (Platform.isIOS) {

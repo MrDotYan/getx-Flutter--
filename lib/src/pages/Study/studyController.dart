@@ -7,10 +7,18 @@ class StudyController extends GetxController {
   RxDouble itemsHeight = 230.0.obs;
   void toItemDeatils() {}
 
+  void toAddPlanPage() {
+    Get.toNamed('/addplans');
+  }
+
   void checkPlatform() {
     if (Platform.isIOS) {
       itemsHeight.value = 260.0;
     }
+  }
+
+  void toPlanPage() {
+    Get.toNamed('/plan');
   }
 
   @override

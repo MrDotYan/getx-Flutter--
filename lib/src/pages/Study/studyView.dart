@@ -12,14 +12,14 @@ class StudyView extends StatelessWidget {
           title: Text('我的学习'),
           actions: [
             TextButton(
-                onPressed: () {},
+                onPressed: _studyController.toPlanPage,
                 child: Text(
                   "学习计划",
                   style: TextStyle(color: Color(0xff000000)),
                 )),
             IconButton(
                 icon: const Icon(IconData(0xe65b, fontFamily: "iconFont")),
-                onPressed: () {})
+                onPressed: _studyController.toAddPlanPage)
           ],
         ),
         body: ListView(
