@@ -1,11 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_picker/flutter_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../Home/homeController.dart';
 import 'categroyController.dart';
+import 'pickerdata.dart';
 
 class CategroyView extends StatelessWidget {
   final CategroyController _categroyController = Get.put(CategroyController());
+  final HomeController _homeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +19,22 @@ class CategroyView extends StatelessWidget {
           leading: Builder(
             builder: (context) => IconButton(
                 icon: const Icon(IconData(0xe6d1, fontFamily: "iconFont")),
-                onPressed: () {}),
+                onPressed: () {
+                  Picker(
+                      adapter: PickerDataAdapter<String>(
+                          pickerdata: JsonDecoder().convert(PickerData)),
+                      changeToFirst: true,
+                      hideHeader: false,
+                      confirmText: "确定",
+                      cancelText: "取消",
+                      confirmTextStyle: TextStyle(color: Color(0xff000000)),
+                      cancelTextStyle: TextStyle(color: Color(0xff000000)),
+                      selectedTextStyle: TextStyle(color: Colors.blue),
+                      onConfirm: (Picker picker, List value) {
+                        print(value.toString());
+                        print(picker.adapter.text);
+                      }).showModal(context);
+                }),
           ),
           actions: [
             IconButton(
@@ -66,7 +87,7 @@ class CategroyView extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
-              childAspectRatio: 0.9,
+              childAspectRatio: _homeController.childAspectRatio.value,
             ),
             itemCount: 200,
             itemBuilder: (context, index) => Card(

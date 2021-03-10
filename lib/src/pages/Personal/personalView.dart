@@ -200,6 +200,7 @@ class PersonalView extends StatelessWidget {
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20))),
                   child: GridView(
+                    physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                       crossAxisSpacing: 8.0,

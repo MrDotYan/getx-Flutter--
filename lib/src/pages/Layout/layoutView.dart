@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'layoutController.dart';
 
 import '../Home/homeView.dart';
 import '../Study/studyView.dart';
 import '../Personal/personalView.dart';
+import '../Categroy/categroyView.dart';
 
 class LayoutView extends StatelessWidget {
   final LayoutController _layoutController = Get.put(LayoutController());
   @override
   Widget build(BuildContext context) {
+    FlutterAppBadger.updateBadgeCount(1);
+
     return Scaffold(
       body: PageView(
         controller: _layoutController.pageController,
         physics: NeverScrollableScrollPhysics(),
-        children: [HomeView(), StudyView(), PersonalView()],
+        children: [HomeView(), CategroyView(), StudyView(), PersonalView()],
       ),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
@@ -35,6 +39,12 @@ class LayoutView extends StatelessWidget {
                     size: 20,
                   ),
                   label: "首页"),
+              BottomNavigationBarItem(
+                  icon: const Icon(
+                    IconData(0xe65f, fontFamily: "iconFont"),
+                    size: 20,
+                  ),
+                  label: "分类"),
               BottomNavigationBarItem(
                   icon: const Icon(
                     IconData(0xe6d5, fontFamily: "iconFont"),

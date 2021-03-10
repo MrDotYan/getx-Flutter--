@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,10 +24,13 @@ class HomeView extends StatelessWidget {
               snap: false,
               forceElevated: false,
               title: Text('学无止境'),
-              leading: IconButton(
-                icon: const Icon(IconData(0xe674, fontFamily: "iconFont")),
-                onPressed: _homeController.scanEvent,
-              ),
+              leading: Platform.isAndroid
+                  ? IconButton(
+                      icon:
+                          const Icon(IconData(0xe674, fontFamily: "iconFont")),
+                      onPressed: _homeController.scanEvent,
+                    )
+                  : null,
               actions: [
                 IconButton(
                   icon: const Icon(IconData(0xe69d, fontFamily: "iconFont")),
@@ -76,7 +81,7 @@ class HomeView extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 8.0,
-                childAspectRatio: 0.9,
+                childAspectRatio: _homeController.childAspectRatio.value,
               ),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {

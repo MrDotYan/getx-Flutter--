@@ -100,7 +100,8 @@ class StudyView extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: ScreenUtil().setHeight(230),
+                      height: ScreenUtil()
+                          .setHeight(_studyController.itemsHeight.value),
                       child: ListView.builder(
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
