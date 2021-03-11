@@ -24,7 +24,10 @@ class HomeController extends GetxController {
   }
 
   void tabOnTapEvent(index) {}
-  void messageEvent() {}
+  void messageEvent() {
+    Get.toNamed('/message');
+  }
+
   void toItemDeatils() {
     Get.toNamed('/items');
   }

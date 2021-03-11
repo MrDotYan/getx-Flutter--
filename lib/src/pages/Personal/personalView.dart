@@ -74,7 +74,9 @@ class PersonalView extends StatelessWidget {
                       Container(
                         child: IconButton(
                           icon: Icon(IconData(0xe66d, fontFamily: "iconFont")),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed("/changeper");
+                          },
                         ),
                       )
                     ],
@@ -97,6 +99,9 @@ class PersonalView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/message');
+                  },
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -116,6 +121,9 @@ class PersonalView extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/order');
+                  },
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -135,6 +143,9 @@ class PersonalView extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/collection');
+                  },
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -154,6 +165,9 @@ class PersonalView extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/history');
+                  },
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

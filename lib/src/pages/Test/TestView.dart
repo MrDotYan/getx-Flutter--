@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getshop/src/components/VideoPlus.dart';
 import 'TestController.dart';
 import 'package:video_player/video_player.dart';
 
@@ -65,12 +64,6 @@ class TestView extends StatelessWidget {
                 )
               ],
             ),
-            Container(
-              child: VideoWidget(
-                title: "23423",
-                url: "",
-              ),
-            )
           ],
         ),
       ),

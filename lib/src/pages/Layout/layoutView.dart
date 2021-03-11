@@ -8,7 +8,7 @@ import '../Home/homeView.dart';
 import '../Study/studyView.dart';
 import '../Personal/personalView.dart';
 import '../Categroy/categroyView.dart';
-import '../Test/TestView.dart';
+// import '../Test/TestView.dart';
 
 class LayoutView extends StatelessWidget {
   final LayoutController _layoutController = Get.put(LayoutController());
@@ -25,7 +25,7 @@ class LayoutView extends StatelessWidget {
           CategroyView(),
           StudyView(),
           PersonalView(),
-          TestView()
+          // TestView()
         ],
       ),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
@@ -64,12 +64,12 @@ class LayoutView extends StatelessWidget {
                     size: 20,
                   ),
                   label: "我的"),
-              BottomNavigationBarItem(
-                  icon: const Icon(
-                    Icons.bug_report,
-                    size: 20,
-                  ),
-                  label: "我的")
+              // BottomNavigationBarItem(
+              //     icon: const Icon(
+              //       Icons.bug_report,
+              //       size: 20,
+              //     ),
+              //     label: "我的")
             ],
             currentIndex: _layoutController.pageIndex.value,
             onTap: _layoutController.onTapNavBarItem,
