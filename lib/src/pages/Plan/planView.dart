@@ -25,6 +25,8 @@ class PlanView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
+                height: 120,
+                padding: EdgeInsets.symmetric(vertical: 20),
                 child: lineDatePicker.DatePicker(
                   DateTime.now(),
                   initialSelectedDate: DateTime.now(),

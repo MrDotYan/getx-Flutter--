@@ -92,7 +92,7 @@ class AddPlanView extends StatelessWidget {
                   children: [
                     Obx(
                       () => Text(
-                        "${_addPlanController.timers}",
+                        "${_addPlanController.timers.toString().split('.')[0]}",
                         style: TextStyle(color: Color(0xff999999)),
                       ),
                     ),
@@ -115,7 +115,7 @@ class AddPlanView extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 10),
               child: TextButton(
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   backgroundColor: Color(0xff0099fff),
                 ),
                 child: Text(
